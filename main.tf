@@ -23,6 +23,7 @@ locals {
 
 resource "cloudflare_api_token" "token" {
   name = var.token_name != "" ? var.token_name : "R2-${local.token_bucket_names}-${var.bucket_read ? "Read" : ""}-${var.bucket_write ? "Write" : ""}"
+  status = "active"
   policies = [{
     effect            = "allow"
     resources         = local.resources
